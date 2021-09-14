@@ -4,9 +4,8 @@
 
 * All codes are developed using Python 3.7.3 in macOS environment
 * There are three main directories here, i.e.:
-  1. **distributed_system** : a directory that holds all the codes
-  2. **storage** : a directory that stores data on each site and logs. Each site contains dataset, exported Grid and R-Trees, as well as skyline results.
-  3. **graph** : a directory that stores scatter plot graphs of dataset and experimental results graphs. 
+  1. **Application** : a directory that holds the core of application, i.e., classes, skyline logics, helpers, and logs.
+  2. **System** : a directory that holds the core of system, i.e., simulation, data generation, graph generation, and accuracy calculation. This directory also stores database on each site for simulation purpose, included dataset, grid, RTree, and skyline results obtained, and stores any kind of graphs, such as scatterplot and  experimental results graphs. 
 
 ## How to run the simulation
 
@@ -45,9 +44,25 @@
     $ pip install -r req.txt
     ```
 
-2. Generate dataset on each site, using this command:
+2. This application has an index file as the entrance to all commands. 
     ```bash
-    $ python3 distributed_system/generate_dataset.py -s <number_of_site> -t <dataset_type> -n <data_num> -d <dim_size>
+    $ python3 index.py --help 
+
+    index.py -o <option/command> -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric>
+    ```
+    Currently, there are seven kinds of command we can use: 
+    * **Generate Dataset**: '`generate_dataset`'
+    * **Precompute**: '`precompute`' or in another word, it is local processing
+    * **Run Query**: '`run_query`'
+    * **Reset Simulation**: '`reset_simulation`'
+    * **Generate Line Graph**: '`generate_line_graph`' to generate experimental results graph
+    * **Generate Scatterplot**: '`generate_scatterplot`' to find out the distribution of dataset
+    * **Check Accuracy**: '`check_accuracy`' to check the accuracy of proposed method (under construction)
+
+
+3. Firstly, we generate dataset on each site, using this command:
+    ```bash
+    $ python3 index.py -o generate_dataset -s <number_of_site> -t <dataset_type> -n <data_num> -d <dim_size> 
     ```
 
     There are 4 parameters here, i.e.
@@ -59,21 +74,16 @@
     * **Data size (-n)**: Number of data for each product and customer.
     * **Dim size (-d)**: Number of dimension or data attributes.
 
-    For example, in this simulation, we generated an Independent dataset with 10000 rows and 2 attributes on 6 sites.
+    For example, in this simulation, we generated an Independent dataset with 500 rows and 2 attributes on 3 sites.
 
     ```bash
-    $ python3 distributed_system/generate_dataset.py -s 6 -t ind -n 10000 -d 3
+    $ python3 index.py -o generate_dataset -s 3 -t ind -n 500 -d 2 
     ```
 
-3. To shorten the process, run the created bash script.
-      ```bash
-      $ bash generate_dataset.sh
-      ```
-
-4. After dataset is generated, the storage directory will look like this.
+4. After dataset is generated, the database directory inside "system" will look like this.
     ```
     .
-    ├── log
+    ├── covtype.csv
     ├── site_1
     │   └── dataset
     │       ├── ind_10000_3_customer.csv
@@ -101,49 +111,51 @@
     └── site_central
     ```
 
-4. We generate scatter plots to illustrate the three kinds of dataset. 
+5. We generate scatter plots to illustrate the three kinds of dataset. 
     ```bash
-    $ python3 distributed_system/generate_scatterplot.py -t <graph_type> -p <product_file> -c <customer_file>  
+    $ python3 index.py -o generate_scatterplot -s <site_id> -p <product_file> -c <customer_file> 
     ```
     There are 3 parameters here, i.e.
-    * **Graph type (-t)**: For now, the available option is only "scatter plot"
+    * **Site ID (-s)**: The default site ID is 1
     * **Product file (-p)**: The filename of product dataset 
     * **Customer file (-c)**: The filename of customer dataset 
 
     For example:
     ```bash
-    $ python3 distributed_system/generate_scatterplot.py -t scatter_plot -p ind_4000_2_product.csv -c ind_4000_2_customer.csv
+    $ python3 index.py -o generate_scatterplot -s 1 -p fc_500_2_product.csv -c fc_500_2_customer.csv
     ```
     Then, we got this graph:
-    * Scatter plot of Independent dataset (ind)
-    ![scatter plot ind](graph/scatter_plot_1/scatter_plot_ind_4000_2_site_1_all.png)
-    * Scatter plot of Anti-Correlated dataset (ant)
-    ![scatter plot ind](graph/scatter_plot_1/scatter_plot_ant_4000_2_site_1_all.png)
-    * Scatter plot of real dataset (fc)
-    ![scatter plot ind](graph/scatter_plot_1/scatter_plot_fc_4000_2_site_1_all.png)
+    * Scatter plot of Independent dataset (IND)
+    ![scatter plot ind](system/graph/scatterplot/scatterplot_ind_1000_2_site_1_all.png)
+    * Scatter plot of Anti-Correlated dataset (ANT)
+    ![scatter plot ind](system/graph/scatterplot/scatterplot_ant_1000_2_site_1_all.png)
+    * Scatter plot of real dataset (FC)
+    ![scatter plot ind](system/graph/scatterplot/scatterplot_fc_1000_2_site_1_all.png)
 
 ### c. Running the simulation
 
 1. Firstly, doing the simulation of **Local Processing**, using this command:
     ```bash
-    $ python3 distributed_system/simulation.py -s <number_of_site> -m <method> -k <k> -t <data_type> -c <cardinality> -d <dimensionality> -g <grid> -o lp
+    $ python3 index.py -o precompute -s <number_of_site> -t <data_type> -n <number_of_data> -d <number_of_dimension> -m <method> -g <grid_size>
     ```
-    There are 8 parameters here, i.e.
+    There are six parameters here, i.e.
       * **Number of sites (-s)** in the distributed system to be used in the simulation.
       * **Method (-m)**: There are three kinds of method used here, i.e. 
         - KMPPD-RiG (**kmppd**)
         - KMPPD (**naive_kmpp**)
         - Naive (**naive**)
-      * **k (-k)**: Number of intended results, inputted by user
       * **Dataset type (-t)**: There are three kinds of dataset type, i.e. 
           - Independent (**ind**)
           - Anti-correlated (**ant**)
           - Forest-covertype / real dataset (**fc**)
-      * **Cardinality (-c)**: Number of data for each product and customer.
-      * **Dimensionality (-d)**: Number of dimension or data attributes.
+      * **Number of data (-c)**: Number of data for each product and customer.
+      * **Number of dimension (-d)**: Number of dimension or data attributes.
       * **Grid size (-g)**: Grid size used in the data structure.
-      * **Option (-o)**: Write option `lp` if we want to do local processing simulation on each site.
 
+    For example:
+    ```bash
+    $ python3 index.py -o precompute -s 3 -t ind -n 500 -d 2 -m kmppd -g 5
+    ```
 2. After doing the Local Processing simulation, these three directories will be created in each site.
     ```
     .

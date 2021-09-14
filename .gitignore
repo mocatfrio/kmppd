@@ -5,7 +5,7 @@ __pycache__/
 nohup.out
 
 system/database/site*
-system/graph*
+@REM system/graph*
 system/database/bak*
 application/logs*
 
