@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+.env
+.env.bak
+nohup.out
+
+system/database/site*
+system/graph*
+system/database/bak*
+application/logs*
+
+.ipynb_checkpoints/
