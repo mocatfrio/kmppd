@@ -77,7 +77,7 @@ KEY_LP_TIME = 'local_processing_time'
 KEY_QUERY_TIME = 'query_time'
 KEY_INDEX_MEM = 'index_mem' 
 KEY_LP_MEM = 'local_processing_mem'
-KEY_BANDWITH_COST = 'bandwith'
+KEY_QUERY_MEM = 'query_mem'
 
 # result keys
 RESULT_PATH = "result_path"

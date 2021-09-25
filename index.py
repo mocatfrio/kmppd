@@ -22,18 +22,19 @@ CHECK_ACCURACY = 'check_accuracy'
 def main(argv):
     pfile = None
     cfile = None
+    del_logs = False
 
     # get arguments 
-    short_command = 'ho:s:t:n:d:m:k:g:x:p:c:e:i:'
-    long_command = ['help', 'option=', 'site=', 'type=', 'num=', 'dim=', 'method=', 'k=', 'grid=', 'sim_name=', 'pfile=', 'cfile=', 'effect=', 'metric=']
+    short_command = 'ho:s:t:n:d:m:k:g:x:p:c:e:i:y:'
+    long_command = ['help', 'option=', 'site=', 'type=', 'num=', 'dim=', 'method=', 'k=', 'grid=', 'sim_name=', 'pfile=', 'cfile=', 'effect=', 'metric=', 'del_logs=']
     try:
         opts, args = getopt.getopt(argv, short_command, long_command)
     except getopt.GetoptError:
-        print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric>")
+        print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric> -y <delete_logs>")
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric>")
+            print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric> -y <delete_logs>")
             sys.exit()
         elif opt in ("-o", "--option"):
             command = arg
@@ -61,6 +62,11 @@ def main(argv):
             effect = arg
         elif opt in ("-i", "--metric"):
             metric = arg
+        elif opt in ("-y", "--del_logs"):
+            if arg == str(0):
+                del_logs = True
+            else:
+                del_logs = False
 
     # try:
     if command == GEN_DATASET:
@@ -70,7 +76,6 @@ def main(argv):
     
     elif command == PRECOMPUTE:
         # python3 index.py -o precompute -s 3 -t ind -n 500 -d 2 -m kmppd -g 5
-        # local processing 
         if method == C.NAIVE:
             print('Naive approach cant be precomputed')
             sys.exit(0)
@@ -78,15 +83,17 @@ def main(argv):
         print('Data precomputing successfully done!')
     
     elif command == RUN_QUERY:
+        # python3 index.py -o run_query -k 10 -s 3 -m kmppd -t ind -n 500 -d 2 -g 5
         simulation.run_query(k, site_num, method, data_type, data_num, dim_size, grid_size)
         print('Query processing successfully done!')
     
     elif command == RESET_SIM:
-        # python3 index.py -o reset_simulation -t ind -n 500 -d 2 -m kmppd -g 5
+        # python3 index.py -o reset_simulation -t ind -n 500 -d 2 -m kmppd -g 5 -y 0
+        # python3 index.py -o reset_simulation -x kmppd_ind_500_2_5 -y 0
         if 'sim_name' in locals():
-            simulation.reset(sim_name=sim_name)
+            simulation.reset(sim_name=sim_name, delete_logs=del_logs)
         else:
-            simulation.reset(method, data_type, data_num, dim_size, grid_size)
+            simulation.reset(method, data_type, data_num, dim_size, grid_size, delete_logs=del_logs)
         print('Simulation reset successfully done!')
 
     elif command == GEN_LINE_GRAPH:

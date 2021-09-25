@@ -158,10 +158,10 @@ class Result:
     def export(self, neighbor_id=None):
         if neighbor_id:
             self.result_pfile = getter.result_path(sitepath=self.site_path,
-                                                   request=C.RESULT_C.PRODUCT_FILE,
+                                                   request=C.RESULT_PRODUCT_FILE,
                                                    opt=str(neighbor_id))
             self.result_cfile = getter.result_path(sitepath=self.site_path,
-                                                   request=C.RESULT_C.CUSTOMER_FILE,
+                                                   request=C.RESULT_CUSTOMER_FILE,
                                                    opt=str(neighbor_id))
             self.result_mc_file = getter.result_path(sitepath=self.site_path,
                                                      request=C.RESULT_MC_FILE,

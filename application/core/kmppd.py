@@ -42,7 +42,7 @@ def init(pfile, cfile, grid_size, site_path, log, method=C.KMPPD, return_result=
 def update(site_path, result, log, method=C.KMPPD):
     # global processing
     log.start()
-    grid = Grid(site_path) 
+    grid = Grid(site_path)
     progress = Progress(len(result.get_all(C.PRODUCT)))
     for product in result.get_all(C.PRODUCT).values():
         progress.counting()

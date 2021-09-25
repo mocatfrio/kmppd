@@ -21,7 +21,9 @@ def precompute(site_num, method, data_type, data_num, dim_size, grid_size):
                  sim_id=sim_id)
 
     # local processing 
+    log.write(method, 'Start Local Processing', with_info=False)
     sites = local_processing(site_num, method, data_type, data_num, dim_size, grid_size, log, sim_id)
+    log.write(method, 'End Local Processing', with_info=False)
 
 
 def run_query(k, site_num, method, data_type, data_num, dim_size, grid_size):
@@ -54,9 +56,10 @@ def strategic_approach(k, site_num, method, data_type, data_num, dim_size, grid_
     sites = local_processing(site_num, method, data_type, data_num, dim_size, grid_size, log, sim_id)
 
     # global processing 
+    log.write(method, 'Start Global Processing', with_info=False)
     global_result = {}
     for site_id in sites:
-        log.start()
+        log.write(method, 'Global Processing of Site ' + str(site_id), with_info=False)
         T = 1
         local_k = T * k
         result = sites[site_id].get_local_top(method, local_k)
@@ -68,16 +71,18 @@ def strategic_approach(k, site_num, method, data_type, data_num, dim_size, grid_
         result.export("final")
         global_result = {**global_result,
                          **result.get_top(key=C.UPDATED_RSKY)} 
-        log.end(method, "Global processing site " + str(site_id))
 
     # query processing
     log.start()
     candidates = helper.sort_dict(global_result, k)
-    log.end(method, "Query processing")
+    log.end(method, "Query Processing")
+    log.write(method, 'End Global Processing', with_info=False)
     return candidates
 
 
 def naive_approach(k, site_num, method, data_type, data_num, dim_size, grid_size, log, sim_id):
+    log.write(method, 'Start Naive', with_info=False)
+
     # init sites and collect all data
     global_pfile = {}
     global_cfile = {}
@@ -89,12 +94,13 @@ def naive_approach(k, site_num, method, data_type, data_num, dim_size, grid_size
 
     # compute using kmppd 
     site_path = getter.site_path("central", method, sim_id, C.KEY_SITE_STORAGE_PATH)
-    result = kmppd.init(global_pfile, global_cfile, site_path, log, C.NAIVE, return_result=True)
+    result = kmppd.init(global_pfile, global_cfile, grid_size, site_path, log, C.NAIVE, return_result=True)
 
     # query processing 
     log.start()
     candidates = result.get_top(k)
-    log.end("Naive approach - Query processing")
+    log.end(method, "Query Processing")
+    log.write(method, 'End Naive', with_info=False)
     return candidates
 
 
@@ -109,7 +115,7 @@ def local_processing(site_num, method, data_type, data_num, dim_size, grid_size,
     return sites
 
 
-def reset(method=None, data_type=None, data_num=None, dim_size=None, grid_size=None, sim_name=None):
+def reset(method=None, data_type=None, data_num=None, dim_size=None, grid_size=None, sim_name=None, delete_logs=False):
     # generate sim name 
     if not sim_name:
         sim_name = getter.simulation_name(method, data_type, data_num, dim_size, grid_size)
@@ -124,9 +130,11 @@ def reset(method=None, data_type=None, data_num=None, dim_size=None, grid_size=N
         return
 
     # delete logs
-    del_dir = C.LOG_PATH + sim_id + "/"
-    io.delete_dir(del_dir)
+    if delete_logs:
+        del_dir = C.LOG_PATH + sim_id + "/"
+        io.delete_dir(del_dir)
 
+    # delete storage
     dirs = os.listdir(C.STORAGE_PATH)
     for dir in dirs:
         if "site" in dir:

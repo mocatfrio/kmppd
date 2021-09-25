@@ -339,3 +339,7 @@ class Grid:
 
     def as_str(self, list_of_int):
         return "".join([str(_) for _ in list_of_int])
+
+
+    def print(self):
+        pprint(self.grid)

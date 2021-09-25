@@ -21,7 +21,7 @@ def generate(effect, data_type, metric):
         y_label = "Penggunaan Memori Pengindeksan Data (MB)"
     elif metric == C.KEY_LP_MEM:
         y_label = "Penggunaan Memori Pemrosesan Lokal (MB)"
-    elif metric == C.KEY_BANDWITH_COST:
+    elif metric == C.KEY_QUERY_MEM:
         y_label = "Biaya Bandwith (MB)"
 
     # define control variable 

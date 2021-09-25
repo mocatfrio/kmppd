@@ -113,3 +113,7 @@ def simulation_id(method, data_type, data_num, dim_size, grid_size):
         sim_info[sim_name] = sim_id
         io.export_json(C.LOG_PATH, C.SIMULATION_INFO_FILE, sim_info)
     return sim_id
+
+
+def log_name(sim_name, metrics, site_num, k):
+    return "_".join([sim_name, str(metrics), str(site_num), str(k)])

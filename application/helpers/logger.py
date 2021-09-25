@@ -33,8 +33,12 @@ class Logger:
 
     def end(self, method=None, event=None):
         self.end_time = time.time()
+        self.write(method, event)
+
+
+    def write(self, method=None, event=None, with_info=True):
         desc = self.generate_event(method, event)
-        self.write(desc)
+        self.write_log(desc, with_info)
 
 
     def on_site(self, site_id):
@@ -80,7 +84,7 @@ class Logger:
         return mem
 
 
-    def write(self, event):
+    def write_log(self, event, with_info=True):
         rows = []
 
         # add column name 
@@ -91,7 +95,9 @@ class Logger:
             rows.append(col_name)
 
         # logging
-        row = [event] + list(self.info.values()) + [self.calc_runtime(), self.calc_mem_usage(), datetime.datetime.now()]
+        row = [event]
+        if with_info:
+            row += list(self.info.values()) + [self.calc_runtime(), self.calc_mem_usage(), datetime.datetime.now()]
         rows.append(row)
         io.export_csv(self.log_path, self.log_file, rows, "a")
         
