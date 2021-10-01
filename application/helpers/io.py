@@ -3,6 +3,7 @@ import csv
 import json
 import shutil
 from pathlib import Path
+import pandas as pd
 
 
 def import_json(filepath, filename):
@@ -53,6 +54,13 @@ def export_csv(filepath, filename, lst, mode="w"):
     print("Exporting data", filename, "is success!")
 
 
+def export_excel(filepath, filename, dict_data):
+    with pd.ExcelWriter(filename) as writer:
+        for sheet_name, df in dict_data:
+            df.to_excel(writer, sheet_name=sheet_name)
+    print("Exporting data", filename, "is success!")
+
+
 def export_graph(filepath, filename, plot, format='png', dpi=300):
     try:
         check_path(filepath)
@@ -71,3 +79,19 @@ def delete_dir(del_dir):
         shutil.rmtree(del_dir)
     except:
         print("Directory", del_dir, "is not found!")
+
+
+def delete_file(file):
+    os.remove(file)
+
+
+def dir_is_exist(dir_name):
+    return os.path.exists(dir_name)
+
+
+def list_files(path, only_file=True, only_dir=True):
+    if only_file:
+        return [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+    if only_dir:
+        return [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+    return os.listdir(path)

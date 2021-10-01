@@ -5,6 +5,7 @@ import application.core.kmppd as kmppd
 import application.core.okmppd as okmppd
 from application.classes.result import Result
 
+import sys
 
 class Site:
     def __init__(self, site_id, log, sim_id):
@@ -31,8 +32,14 @@ class Site:
             okmppd.init(pfile, cfile, grid_size, storage_path, self.log)
 
         # update site info and export
-        self.site_info[self.keyname(method)] = True
+        self.site_info[getter.keyname(method, self.sim_id)] = True
         io.export_json(self.site_path, self.site_info_file, self.site_info)
+
+
+    def get_final_result(self, site_num, method):
+        storage_path = getter.site_path(self.id, method, self.sim_id, C.KEY_SITE_STORAGE_PATH)
+        result = Result(site_path=storage_path, final=True, site_num=site_num)
+        return result
 
 
     def compute(self, method, top_k_data):
@@ -92,12 +99,32 @@ class Site:
         return result
         
 
-    def is_precomputed(self, method):
-        if self.keyname(method) in self.site_info:
-            return self.site_info[self.keyname(method)]
-        return False
+    def is_local_precomputed(self, method):
+        if getter.keyname(method, self.sim_id) in self.site_info:
+            return self.site_info[getter.keyname(method, self.sim_id)]
 
-
-    def keyname(self, method):
-        return "_".join([method, self.sim_id, C.IS_DONE])
+        is_exist = []
+        list_dir = ['grid', 'result', 'rtree']
+        storage_path = getter.site_path(self.id, method, self.sim_id, C.KEY_SITE_STORAGE_PATH)
+        if io.dir_is_exist(storage_path):
+            for dir in list_dir:
+                if io.dir_is_exist(storage_path + '/' + dir):
+                    is_exist.append(True)
+                else:
+                    is_exist.append(False)
+        return all(is_exist)
     
+    
+    def is_global_precomputed(self, site_num, method):
+        storage_path = getter.site_path(self.id, method, self.sim_id, C.KEY_SITE_STORAGE_PATH)
+        result_global_path = getter.result_path(sitepath=storage_path, site_num=site_num, request=C.RESULT_GLOBAL_PATH)
+
+        is_exist = []
+        if io.dir_is_exist(result_global_path):
+            dirs = io.list_files(result_global_path)
+            for dir in dirs:
+                if 'final' in dir and 'product' in dir:
+                    is_exist.append(True)
+                if 'final' in dir and 'customer' in dir:
+                    is_exist.append(True)
+        return len(is_exist) == 2

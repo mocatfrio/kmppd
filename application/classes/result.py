@@ -6,17 +6,10 @@ import application.helpers.helper as helper
 
 
 class Result:
-    def __init__(self, site_path=None, json_data=None):
+    def __init__(self, site_path=None, json_data=None, final=False, site_num=None):
         self.site_path = site_path
         self.result_path = getter.result_path(sitepath=site_path)
-        self.result_pfile = getter.result_path(sitepath=site_path,
-                                               request=C.RESULT_PRODUCT_FILE)
-        self.result_cfile = getter.result_path(sitepath=site_path,
-                                               request=C.RESULT_CUSTOMER_FILE)
-        self.result_mc_file = getter.result_path(sitepath=site_path,
-                                                 request=C.RESULT_MC_FILE)
-    
-        # import file result
+        self.define_result_filepath(final=final, site_num=site_num)
         if json_data:
             self.result = json_data
         else:
@@ -29,6 +22,35 @@ class Result:
     """ 
     Getter Data
     """
+
+    def define_result_filepath(self, neighbor_id=None, final=False, site_num=None):
+        if neighbor_id:
+            opt = str(neighbor_id)
+        else:
+            if final:
+                opt = "final"
+        if 'opt' in locals():
+            self.result_path += str(site_num) + '/'
+            self.result_pfile = getter.result_path(sitepath=self.site_path,
+                                                   request=C.RESULT_PRODUCT_FILE,
+                                                   opt=opt,
+                                                   site_num=site_num)
+            self.result_cfile = getter.result_path(sitepath=self.site_path,
+                                                   request=C.RESULT_CUSTOMER_FILE,
+                                                   opt=opt,
+                                                   site_num=site_num)
+            self.result_mc_file = getter.result_path(sitepath=self.site_path,
+                                                     request=C.RESULT_MC_FILE,
+                                                     opt=opt,
+                                                     site_num=site_num)
+        else:                                       
+            # default file path 
+            self.result_pfile = getter.result_path(sitepath=self.site_path,
+                                                request=C.RESULT_PRODUCT_FILE)
+            self.result_cfile = getter.result_path(sitepath=self.site_path,
+                                                request=C.RESULT_CUSTOMER_FILE)
+            self.result_mc_file = getter.result_path(sitepath=self.site_path,
+                                                    request=C.RESULT_MC_FILE)
 
 
     def get_all(self, obj_type=C.PRODUCT):
@@ -155,17 +177,9 @@ class Result:
         self.result[C.PRODUCT][product[C.ID]][C.RSKY] = {}
  
 
-    def export(self, neighbor_id=None):
+    def export(self, neighbor_id=None, site_num=None):
         if neighbor_id:
-            self.result_pfile = getter.result_path(sitepath=self.site_path,
-                                                   request=C.RESULT_PRODUCT_FILE,
-                                                   opt=str(neighbor_id))
-            self.result_cfile = getter.result_path(sitepath=self.site_path,
-                                                   request=C.RESULT_CUSTOMER_FILE,
-                                                   opt=str(neighbor_id))
-            self.result_mc_file = getter.result_path(sitepath=self.site_path,
-                                                     request=C.RESULT_MC_FILE,
-                                                     opt=str(neighbor_id))
+            self.define_result_filepath(neighbor_id=neighbor_id, site_num=site_num)
         io.export_json(self.result_path, self.result_pfile, self.result[C.PRODUCT])
         io.export_json(self.result_path, self.result_cfile, self.result[C.CUSTOMER])
     

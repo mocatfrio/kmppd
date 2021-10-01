@@ -12,6 +12,18 @@ LOG_PATH = APP_PATH + "logs/"
 SIMULATION_INFO_FILE = LOG_PATH + "simulation" + ".json"
 # ACCURACY_PATH = os.getenv("STORAGE_PATH") + "accuracy/"
 
+# command 
+GEN_DATASET = 'generate_dataset'
+LOCAL_PRECOMPUTE = 'local_precompute'
+GLOBAL_PRECOMPUTE = 'global_precompute'
+RUN_QUERY = 'run_query'
+RESET_SIM = 'reset_simulation'
+GEN_LINE_GRAPH = 'generate_line_graph'
+GEN_SCATTERPLOT = 'generate_scatterplot'
+CHECK_ACCURACY = 'check_accuracy'
+GEN_TEST_RESULT = 'generate_test_result'
+GEN_SCENARIO = 'generate_scenario'
+
 # dataset 
 FC = "fc"
 ANT = "ant"
@@ -81,6 +93,7 @@ KEY_QUERY_MEM = 'query_mem'
 
 # result keys
 RESULT_PATH = "result_path"
+RESULT_GLOBAL_PATH = "result_global_path"
 RESULT_PRODUCT_FILE = "result_product_file"
 RESULT_CUSTOMER_FILE = "result_customer_file"
 RESULT_MC_FILE = "result_market_contribution_file"

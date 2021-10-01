@@ -7,16 +7,9 @@ import system.core.line_graph as line_graph
 import system.core.scatterplot as scatterplot
 import system.core.simulation as simulation
 import system.core.accuracy as accuracy
+import system.core.scenario as scenario
+import system.core.test_result as test_result
 import application.helpers.constant as C
-
-# command 
-GEN_DATASET = 'generate_dataset'
-PRECOMPUTE = 'precompute'
-RUN_QUERY = 'run_query'
-RESET_SIM = 'reset_simulation'
-GEN_LINE_GRAPH = 'generate_line_graph'
-GEN_SCATTERPLOT = 'generate_scatterplot'
-CHECK_ACCURACY = 'check_accuracy'
 
 
 def main(argv):
@@ -30,11 +23,13 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, short_command, long_command)
     except getopt.GetoptError:
-        print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric> -y <delete_logs>")
+        print_help()
         sys.exit(2)
+    if not opts:
+        print_help()
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print("index.py -s <number of site> -t <dataset type> -n <number of data> -d <dim size> -m <method> -k <k> -g <grid size> -x <simulation name> -p <product filename> -c <customer filename> -e <effect> -i <metric> -y <delete_logs>")
+            print_help()
             sys.exit()
         elif opt in ("-o", "--option"):
             command = arg
@@ -69,25 +64,33 @@ def main(argv):
                 del_logs = False
 
     # try:
-    if command == GEN_DATASET:
+    if command == C.GEN_DATASET:
         # python3 index.py -o generate_dataset -s 3 -t ind -n 500 -d 2 
         dataset.generate(site_num, data_type, data_num, dim_size)
         print('Data generation successfully done!')
     
-    elif command == PRECOMPUTE:
-        # python3 index.py -o precompute -s 3 -t ind -n 500 -d 2 -m kmppd -g 5
+    elif command == C.LOCAL_PRECOMPUTE:
+        # python3 index.py -o local_precompute -s 3 -t ind -n 500 -d 2 -m kmppd -g 5
         if method == C.NAIVE:
             print('Naive approach cant be precomputed')
             sys.exit(0)
-        simulation.precompute(site_num, method, data_type, data_num, dim_size, grid_size)
-        print('Data precomputing successfully done!')
+        simulation.local_precompute(site_num, method, data_type, data_num, dim_size, grid_size)
+        print('Local precomputing successfully done!')
     
-    elif command == RUN_QUERY:
+    elif command == C.GLOBAL_PRECOMPUTE:
+        # python3 index.py -o global_precompute -s 3 -t ind -n 500 -d 2 -m kmppd -g 5
+        if method == C.NAIVE:
+            print('Naive approach cant be precomputed')
+            sys.exit(0)
+        simulation.global_precompute(site_num, method, data_type, data_num, dim_size, grid_size)
+        print('Global precomputing successfully done!')
+
+    elif command == C.RUN_QUERY:
         # python3 index.py -o run_query -k 10 -s 3 -m kmppd -t ind -n 500 -d 2 -g 5
         simulation.run_query(k, site_num, method, data_type, data_num, dim_size, grid_size)
         print('Query processing successfully done!')
     
-    elif command == RESET_SIM:
+    elif command == C.RESET_SIM:
         # python3 index.py -o reset_simulation -t ind -n 500 -d 2 -m kmppd -g 5 -y 0
         # python3 index.py -o reset_simulation -x kmppd_ind_500_2_5 -y 0
         if 'sim_name' in locals():
@@ -96,20 +99,53 @@ def main(argv):
             simulation.reset(method, data_type, data_num, dim_size, grid_size, delete_logs=del_logs)
         print('Simulation reset successfully done!')
 
-    elif command == GEN_LINE_GRAPH:
+    elif command == C.GEN_LINE_GRAPH:
         line_graph.generate(effect, data_type, metric)
     
-    elif command == GEN_SCATTERPLOT:
+    elif command == C.GEN_SCATTERPLOT:
         # python3 index.py -o generate_scatterplot -s 1 -p fc_500_2_product.csv -c fc_500_2_customer.csv
         scatterplot.generate(pfile, cfile, site_num)
     
-    elif command == CHECK_ACCURACY:
+    elif command == C.CHECK_ACCURACY:
         site_id = site_num
         accuracy.check(site_id, pfile, cfile, grid_size, method)
+
+    elif command == C.GEN_SCENARIO:
+        scenario.generate()
+
+    elif command == C.GEN_TEST_RESULT:
+        test_result.generate()
     
     # except Exception as e:
     #     print(e)
 
+def print_help():
+    lst_of_command = [C.GEN_DATASET, C.PRECOMPUTE, C.RUN_QUERY, C.RESET_SIM, C.GEN_LINE_GRAPH, C.GEN_SCATTERPLOT, C.CHECK_ACCURACY, C.GEN_TEST_RESULT, C.GEN_SCENARIO]
+    lst_of_dataset_type = [C.IND, C.ANT, C.FC]
+    lst_of_method = [C.KMPPD, C.OKMPPD, C.NAIVE]
+
+    print("usage: python3 index.py [-ostndmkgxpceiy] [parameter...]")
+    print("-------------------options-------------------")
+    print("-o \t : command, i.e.:")
+    for com in lst_of_command:
+        print("\t   -", com)
+    print("-s \t : number of site")
+    print("-t \t : dataset type, i.e.:")
+    for dt in lst_of_dataset_type:
+        print("\t   -", dt)
+    print("-n \t : number of data row")
+    print("-d \t : number of data dimension")
+    print("-m \t : method")
+    for met in lst_of_method:
+        print("\t   -", met)
+    print("-k \t : number of query result")
+    print("-g \t : grid size")
+    print("-x \t : simulation name")
+    print("-p \t : product filename")
+    print("-c \t : customer filename")
+    print("-e \t : effect of")
+    print("-i \t : metric")
+    print("-y \t : delete logs?")
 
 if __name__ == '__main__':
     main(sys.argv[1:])

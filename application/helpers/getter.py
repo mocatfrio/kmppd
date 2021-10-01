@@ -42,18 +42,24 @@ def rtree_path(sitepath=None, site_id=None, rtree_id=None, request=C.KEY_RTREE_P
         return rtree_path + rtree_id + file_ext
 
 
-def result_path(sitepath=None, site_id=None, request=C.RESULT_PATH, opt=None):
+def result_path(sitepath=None, site_id=None, request=C.RESULT_PATH, opt=None, site_num=None):
     file_ext = ".json"
     if site_id:
         sitepath = site_path(site_id)
     result_path = sitepath + "result/"
     if opt:
+        result_path += str(site_num) + '/'
         if opt == "final":
             global_filename = "_".join([C.RESULT_GLOBAL_FILE, opt, ""])
         else:
             global_filename = "_".join([C.RESULT_GLOBAL_FILE, "after", "site", opt, ""])
+    
     if request == C.RESULT_PATH:
         return result_path
+    if request == C.RESULT_GLOBAL_PATH:
+        result_path += str(site_num) + '/'
+        return result_path
+
     if request == C.RESULT_PRODUCT_FILE:
         if opt:
             return result_path + global_filename + C.PRODUCT + file_ext
@@ -117,3 +123,8 @@ def simulation_id(method, data_type, data_num, dim_size, grid_size):
 
 def log_name(sim_name, metrics, site_num, k):
     return "_".join([sim_name, str(metrics), str(site_num), str(k)])
+
+
+def keyname(method, sim_id):
+    return "_".join([method, sim_id, C.IS_DONE])
+
