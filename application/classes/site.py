@@ -112,7 +112,7 @@ class Site:
                     is_exist.append(True)
                 else:
                     is_exist.append(False)
-        return all(is_exist)
+        return len(is_exist) == len(list_dir) and all(is_exist)
     
     
     def is_global_precomputed(self, site_num, method):

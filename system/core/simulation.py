@@ -11,7 +11,7 @@ def local_precompute(site_num, method, data_type, data_num, dim_size, grid_size)
     # get simulation id 
     sim_id = getter.simulation_id(method, data_type, data_num,
                                   dim_size, grid_size)
-
+    
     # init logger 
     log = Logger(site_num=site_num, method=method,
                  data_type=data_type, data_num=data_num,

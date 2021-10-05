@@ -8,8 +8,7 @@ import application.helpers.helper as helper
 class Result:
     def __init__(self, site_path=None, json_data=None, final=False, site_num=None):
         self.site_path = site_path
-        self.result_path = getter.result_path(sitepath=site_path)
-        self.define_result_filepath(final=final, site_num=site_num)
+        self.define_result_path(final=final, site_num=site_num)
         if json_data:
             self.result = json_data
         else:
@@ -23,14 +22,16 @@ class Result:
     Getter Data
     """
 
-    def define_result_filepath(self, neighbor_id=None, final=False, site_num=None):
+    def define_result_path(self, neighbor_id=None, final=False, site_num=None):
         if neighbor_id:
             opt = str(neighbor_id)
         else:
             if final:
                 opt = "final"
         if 'opt' in locals():
-            self.result_path += str(site_num) + '/'
+            self.result_path = getter.result_path(sitepath=self.site_path,
+                                                  site_num=site_num,
+                                                  request=C.RESULT_GLOBAL_PATH)
             self.result_pfile = getter.result_path(sitepath=self.site_path,
                                                    request=C.RESULT_PRODUCT_FILE,
                                                    opt=opt,
@@ -45,6 +46,7 @@ class Result:
                                                      site_num=site_num)
         else:                                       
             # default file path 
+            self.result_path = getter.result_path(sitepath=self.site_path)
             self.result_pfile = getter.result_path(sitepath=self.site_path,
                                                 request=C.RESULT_PRODUCT_FILE)
             self.result_cfile = getter.result_path(sitepath=self.site_path,
@@ -179,7 +181,7 @@ class Result:
 
     def export(self, neighbor_id=None, site_num=None):
         if neighbor_id:
-            self.define_result_filepath(neighbor_id=neighbor_id, site_num=site_num)
+            self.define_result_path(neighbor_id=neighbor_id, site_num=site_num)
         io.export_json(self.result_path, self.result_pfile, self.result[C.PRODUCT])
         io.export_json(self.result_path, self.result_cfile, self.result[C.CUSTOMER])
     
