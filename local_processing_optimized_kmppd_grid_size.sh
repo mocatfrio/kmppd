@@ -9,19 +9,19 @@
 # GRID SIZE
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 3
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 4
-python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 5
+#python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 5
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 6
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m optimized_kmppd -g 7
 
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 3
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 4
-python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 5
+#python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 5
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 6
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m optimized_kmppd -g 7
 
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 3
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 4
-python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
+#python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 6
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m optimized_kmppd -g 7
 

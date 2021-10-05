@@ -8,14 +8,14 @@
 
 # DIMENSIONALITY
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 2 -m kmppd -g 5
-python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m kmppd -g 5
+#python3 index.py -o precompute -s 6 -t ind -n 5000 -d 3 -m kmppd -g 5
 python3 index.py -o precompute -s 6 -t ind -n 5000 -d 4 -m kmppd -g 5
 
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 2 -m kmppd -g 5
-python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m kmppd -g 5
+#python3 index.py -o precompute -s 6 -t ant -n 5000 -d 3 -m kmppd -g 5
 python3 index.py -o precompute -s 6 -t ant -n 5000 -d 4 -m kmppd -g 5
 
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 2 -m kmppd -g 5
-python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m kmppd -g 5
+#python3 index.py -o precompute -s 6 -t fc -n 5000 -d 3 -m kmppd -g 5
 python3 index.py -o precompute -s 6 -t fc -n 5000 -d 4 -m kmppd -g 5
 
