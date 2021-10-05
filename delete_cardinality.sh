@@ -1,13 +1,6 @@
 #!/bin/sh
 ## declare an array variable
-
-# exc
-# "optimized_kmppd_f3feb0c9-4c1b-4b1f-85be-d4588ea71c44"
-# "optimized_kmppd_4d39c882-078b-429a-b120-ef12523738fe"
-# "optimized_kmppd_7242a22b-e8ea-4bdf-8984-7e94eb755500"
-
-declare -a arr=("dataset"
-                "kmppd_f4bb9067-385f-46a0-b0ed-653a8afc67df"
+declare -a arr=("kmppd_f4bb9067-385f-46a0-b0ed-653a8afc67df"
                 "kmppd_66e540f0-0de3-4834-a3ba-9b93f6263636"
                 "kmppd_bee86b91-5390-474c-b68d-e93eea04e176"
                 "kmppd_2a23f460-102a-4561-aa4c-db203d3ebc62"
@@ -34,22 +27,21 @@ declare -a arr=("dataset"
                 "optimized_kmppd_d0413e69-91eb-4243-86a0-c34e6113cb99"
                 "optimized_kmppd_fdf20f3c-f2dc-43e0-ad22-058fba179525"
                 "optimized_kmppd_bd22d281-b942-4aa8-9542-0cb455716284"
-                "site_info.json"
                 )
 
-read -s -p "Enter ssh password : " PASSWORD_SSH;
+
 echo -e "\nEnter site:"
 read SITE_NUM
 
 ## now loop through the above array
 for i in "${arr[@]}"
 do
-  sshpass -p $PASSWORD_SSH scp -r root@178.128.122.179:~/kmppd/system/database/site_$SITE_NUM/$i/ ~/database_cardinality/site_$SITE_NUM
+  rm -r ~/kmppd/system/database/site_$SITE_NUM/$i/
   if [ $? -eq 0 ];
   then
-      echo -e "${i} is successfully exported from site ${SITE_NUM}\n"
+      echo -e "${i} is successfully deleted from site ${SITE_NUM}\n"
   else
-      echo -e "${i} is NOT successfully exported from site ${SITE_NUM}\n"
+      echo -e "${i} is NOT successfully deleted from site ${SITE_NUM}\n"
   fi
 done
 echo 'done'
