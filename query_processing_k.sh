@@ -35,8 +35,4 @@ python3 index.py -o run_query -k 50 -s 4 -t ant -n 5000 -d 3 -m optimized_kmppd 
 python3 index.py -o run_query -k 10 -s 4 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
 python3 index.py -o run_query -k 20 -s 4 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
 python3 index.py -o run_query -k 40 -s 4 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
-<<<<<<< HEAD
 python3 index.py -o run_query -k 50 -s 4 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
-=======
-python3 index.py -o run_query -k 50 -s 4 -t fc -n 5000 -d 3 -m optimized_kmppd -g 5
->>>>>>> 3feba915d88ffa454d28baa74e223d4eb46e9b2a
