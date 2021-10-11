@@ -11,6 +11,7 @@ STORAGE_PATH = SYSTEM_PATH + 'database/'
 LOG_PATH = APP_PATH + "logs/"
 SIMULATION_INFO_FILE = LOG_PATH + "simulation" + ".json"
 # ACCURACY_PATH = os.getenv("STORAGE_PATH") + "accuracy/"
+LOG_PROD_PATH = APP_PATH + "logs_prod/"
 
 # command 
 GEN_DATASET = 'generate_dataset'
