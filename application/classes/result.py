@@ -190,6 +190,8 @@ class Result:
         if C.UPDATED_RSKY in self.result[C.PRODUCT]:
             self.result[C.PRODUCT][product[C.ID]][C.TRUE_RSKY] = self.result[C.PRODUCT][product[C.ID]][C.UPDATED_RSKY].copy()
             self.result[C.PRODUCT][product[C.ID]][C.UPDATED_RSKY] = {}
+        else:
+            self.result[C.PRODUCT][product[C.ID]][C.TRUE_RSKY] = {}
 
 
     def is_calculated(self, customer, mode=C.CREATE):
