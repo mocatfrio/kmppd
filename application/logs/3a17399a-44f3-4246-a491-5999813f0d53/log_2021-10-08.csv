@@ -1,0 +1,23 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (KMPPD) - Start Global Processing
+Strategic Approach (KMPPD) - Global Processing of Site 1
+Strategic Approach (KMPPD) - Get Local Top,4,-,kmppd,1,ant,5000,3,3,00:00:05.50,296.96484375,2021-10-08 23:30:43.253163
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,2,ant,5000,3,3,00:20:22.49,293.14453125,2021-10-08 23:51:05.746694
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,3,ant,5000,3,3,00:21:11.13,293.3828125,2021-10-09 00:12:18.827579
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,4,ant,5000,3,3,00:22:11.80,294.15625,2021-10-09 00:34:32.846299
+Strategic Approach (KMPPD) - Global Processing of Site 2
+Strategic Approach (KMPPD) - Get Local Top,4,-,kmppd,2,ant,5000,3,3,00:00:06.84,434.70703125,2021-10-09 00:34:45.169338
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,1,ant,5000,3,3,00:19:45.63,390.20703125,2021-10-09 00:54:30.877421
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,3,ant,5000,3,3,00:20:27.76,389.95703125,2021-10-09 01:15:00.567318
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,4,ant,5000,3,3,00:21:52.24,389.70703125,2021-10-09 01:36:55.162123
+Strategic Approach (KMPPD) - Global Processing of Site 3
+Strategic Approach (KMPPD) - Get Local Top,4,-,kmppd,3,ant,5000,3,3,00:00:06.70,472.2265625,2021-10-09 01:37:07.280303
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,1,ant,5000,3,3,00:19:37.42,407.9765625,2021-10-09 01:56:44.784051
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,2,ant,5000,3,3,00:20:35.47,407.4765625,2021-10-09 02:17:22.289278
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,4,ant,5000,3,3,00:21:57.13,407.2265625,2021-10-09 02:39:21.696078
+Strategic Approach (KMPPD) - Global Processing of Site 4
+Strategic Approach (KMPPD) - Get Local Top,4,-,kmppd,4,ant,5000,3,3,00:00:07.09,487.47265625,2021-10-09 02:39:34.275907
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,1,ant,5000,3,3,00:19:31.28,423.97265625,2021-10-09 02:59:05.644188
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,2,ant,5000,3,3,00:20:05.23,423.97265625,2021-10-09 03:19:12.697295
+Strategic Approach (KMPPD) - Global Processing,4,-,kmppd,3,ant,5000,3,3,00:21:11.86,423.22265625,2021-10-09 03:40:26.853087
+Strategic Approach (KMPPD) - End Global Processing

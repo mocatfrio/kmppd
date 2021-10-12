@@ -1,0 +1,33 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,2,30,kmppd,-,ind,5000,3,5,00:00:02.65,124.7265625,2021-10-05 07:45:19.907586
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,3,30,kmppd,-,ind,5000,3,5,00:00:05.06,136.24609375,2021-10-05 07:45:25.839592
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,30,kmppd,-,ind,5000,3,5,00:00:07.85,142.55078125,2021-10-05 07:45:34.601201
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,5,30,kmppd,-,ind,5000,3,5,00:00:11.18,149.421875,2021-10-05 07:45:46.675412
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,6,30,kmppd,-,ind,5000,3,5,00:00:15.35,135.96875,2021-10-05 07:46:02.876257
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,2,30,kmppd,-,ind,5000,3,5,00:00:02.73,124.51171875,2021-10-05 08:05:29.796176
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,3,30,kmppd,-,ind,5000,3,5,00:00:05.08,136.15625,2021-10-05 08:05:35.748644
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,30,kmppd,-,ind,5000,3,5,00:00:07.76,142.44140625,2021-10-05 08:05:44.370268
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,5,30,kmppd,-,ind,5000,3,5,00:00:11.53,149.22265625,2021-10-05 08:05:56.779577
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,6,30,kmppd,-,ind,5000,3,5,00:00:15.62,135.703125,2021-10-05 08:06:13.311186
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,10,kmppd,-,ind,5000,3,5,00:00:07.50,143.00390625,2021-10-05 08:10:25.737047
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,20,kmppd,-,ind,5000,3,5,00:00:07.62,142.546875,2021-10-05 08:10:34.243805
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,10,kmppd,-,ind,5000,3,5,00:00:07.64,142.4453125,2021-10-05 08:12:17.952738
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,20,kmppd,-,ind,5000,3,5,00:00:07.69,142.44140625,2021-10-05 08:12:26.496949
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,40,kmppd,-,ind,5000,3,5,00:00:07.74,142.421875,2021-10-05 08:12:35.151619
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,50,kmppd,-,ind,5000,3,5,00:00:07.53,142.5703125,2021-10-05 08:12:43.521881

@@ -7,6 +7,5 @@ nohup.out
 system/database/site*
 @REM system/graph*
 system/database/bak*
-application/logs*
 
 .ipynb_checkpoints/

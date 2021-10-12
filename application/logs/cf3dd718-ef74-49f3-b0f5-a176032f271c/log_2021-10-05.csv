@@ -1,0 +1,19 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,2,30,optimized_kmppd,-,ant,5000,3,5,00:00:04.83,108.88671875,2021-10-05 08:07:30.494379
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,3,30,optimized_kmppd,-,ant,5000,3,5,00:00:06.73,99.12109375,2021-10-05 08:07:38.144394
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,4,30,optimized_kmppd,-,ant,5000,3,5,00:00:09.32,100.14453125,2021-10-05 08:07:48.378703
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,5,30,optimized_kmppd,-,ant,5000,3,5,00:00:11.09,100.2265625,2021-10-05 08:08:00.333691
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,6,30,optimized_kmppd,-,ant,5000,3,5,00:00:13.20,101.1640625,2021-10-05 08:08:14.388929
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,4,10,optimized_kmppd,-,ant,5000,3,5,00:00:09.22,100.52734375,2021-10-05 08:14:42.693486
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,4,20,optimized_kmppd,-,ant,5000,3,5,00:00:09.08,100.94921875,2021-10-05 08:14:52.658202
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,4,40,optimized_kmppd,-,ant,5000,3,5,00:00:09.12,100.36328125,2021-10-05 08:15:02.702929
+Strategic Approach (Optimized-KMPPD) - Start Query Processing
+Strategic Approach (Optimized-KMPPD) - End Query Processing,4,50,optimized_kmppd,-,ant,5000,3,5,00:00:09.23,100.50390625,2021-10-05 08:15:12.849064
