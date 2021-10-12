@@ -1,0 +1,3 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (KMPPD) - Start Query Processing
+Strategic Approach (KMPPD) - End Query Processing,4,30,kmppd,-,ant,10000,3,5,00:00:03.73,103.5703125,2021-10-05 08:33:08.067012

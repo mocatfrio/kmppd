@@ -1,0 +1,23 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (Optimized-KMPPD) - Start Global Processing
+Strategic Approach (Optimized-KMPPD) - Global Processing of Site 1
+Strategic Approach (Optimized-KMPPD) - Get Local Top,4,-,optimized_kmppd,1,fc,10000,3,5,00:00:05.65,267.73828125,2021-10-05 01:19:57.377746
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,2,fc,10000,3,5,01:48:49.62,267.6015625,2021-10-05 03:08:46.997316
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,3,fc,10000,3,5,03:35:36.90,267.9375,2021-10-05 06:44:29.610093
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,4,fc,10000,3,5,03:29:42.52,272.8359375,2021-10-05 10:14:17.373911
+Strategic Approach (Optimized-KMPPD) - Global Processing of Site 2
+Strategic Approach (Optimized-KMPPD) - Get Local Top,4,-,optimized_kmppd,2,fc,10000,3,5,00:00:07.38,354.17578125,2021-10-05 10:14:33.982658
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,1,fc,10000,3,5,01:38:00.10,347.8046875,2021-10-05 11:52:34.253723
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,3,fc,10000,3,5,02:22:52.09,348.87109375,2021-10-05 14:15:29.715480
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,4,fc,10000,3,5,03:11:13.28,348.2109375,2021-10-05 17:26:44.810983
+Strategic Approach (Optimized-KMPPD) - Global Processing of Site 3
+Strategic Approach (Optimized-KMPPD) - Get Local Top,4,-,optimized_kmppd,3,fc,10000,3,5,00:00:06.48,454.55859375,2021-10-05 17:26:57.147533
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,1,fc,10000,3,5,01:24:21.44,436.23046875,2021-10-05 18:51:18.690146
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,2,fc,10000,3,5,01:17:40.17,435.73046875,2021-10-05 20:09:02.487460
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,4,fc,10000,3,5,03:32:57.42,436.2265625,2021-10-05 23:42:03.624611
+Strategic Approach (Optimized-KMPPD) - Global Processing of Site 4
+Strategic Approach (Optimized-KMPPD) - Get Local Top,4,-,optimized_kmppd,4,fc,10000,3,5,00:00:06.68,524.87109375,2021-10-05 23:42:16.597354
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,1,fc,10000,3,5,01:20:49.78,477.203125,2021-10-06 01:03:06.507875
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,2,fc,10000,3,5,01:01:05.66,476.4765625,2021-10-06 02:04:15.675185
+Strategic Approach (Optimized-KMPPD) - Global Processing,4,-,optimized_kmppd,3,fc,10000,3,5,04:03:38.85,476.734375,2021-10-06 06:07:58.065217
+Strategic Approach (Optimized-KMPPD) - End Global Processing

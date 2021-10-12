@@ -11,12 +11,12 @@
 # python3 index.py -o global_precompute -s 4 -t ind -n 5000 -d 4 -m kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t ant -n 5000 -d 2 -m kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t ant -n 5000 -d 4 -m kmppd -g 5
-python3 index.py -o global_precompute -s 4 -t fc -n 5000 -d 2 -m kmppd -g 5
+# python3 index.py -o global_precompute -s 4 -t fc -n 5000 -d 2 -m kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t fc -n 5000 -d 4 -m kmppd -g 5
 
 # python3 index.py -o global_precompute -s 4 -t ind -n 5000 -d 2 -m optimized_kmppd -g 5
-python3 index.py -o global_precompute -s 4 -t ind -n 5000 -d 4 -m optimized_kmppd -g 5
-## python3 index.py -o global_precompute -s 4 -t ant -n 5000 -d 2 -m optimized_kmppd -g 5
+# python3 index.py -o global_precompute -s 4 -t ind -n 5000 -d 4 -m optimized_kmppd -g 5
+# python3 index.py -o global_precompute -s 4 -t ant -n 5000 -d 2 -m optimized_kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t ant -n 5000 -d 4 -m optimized_kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t fc -n 5000 -d 2 -m optimized_kmppd -g 5
 # python3 index.py -o global_precompute -s 4 -t fc -n 5000 -d 4 -m optimized_kmppd -g 5

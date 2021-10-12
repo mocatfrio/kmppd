@@ -1,0 +1,13 @@
+Event,Site Num,K,Method,On Site,Data Type,Data Num,Dim Size,Grid Size,Runtime (S),Mem Usage (MB),Timestamp
+Strategic Approach (KMPPD) - Start Local Processing
+Strategic Approach (KMPPD) - Indexing Data,6,-,kmppd,1,fc,5000,3,6,00:00:05.22,85.41015625,2021-10-07 09:07:09.367179
+Strategic Approach (KMPPD) - Start Local Processing
+Strategic Approach (KMPPD) - Indexing Data,4,-,kmppd,1,fc,5000,3,6,00:00:00.09,80.39453125,2021-10-07 20:04:34.767173
+Strategic Approach (KMPPD) - Local Processing,4,-,kmppd,1,fc,5000,3,6,01:54:52.36,242.38671875,2021-10-07 21:59:27.130196
+Strategic Approach (KMPPD) - Indexing Data,4,-,kmppd,2,fc,5000,3,6,00:00:05.54,107.74609375,2021-10-07 21:59:39.744163
+Strategic Approach (KMPPD) - Local Processing,4,-,kmppd,2,fc,5000,3,6,02:06:38.80,220.34765625,2021-10-08 00:06:18.544882
+Strategic Approach (KMPPD) - Indexing Data,4,-,kmppd,3,fc,5000,3,6,00:00:05.59,127.09765625,2021-10-08 00:06:30.478001
+Strategic Approach (KMPPD) - Local Processing,4,-,kmppd,3,fc,5000,3,6,02:15:26.32,232.84765625,2021-10-08 02:21:56.797379
+Strategic Approach (KMPPD) - Indexing Data,4,-,kmppd,4,fc,5000,3,6,00:00:05.63,134.34765625,2021-10-08 02:22:09.266956
+Strategic Approach (KMPPD) - Local Processing,4,-,kmppd,4,fc,5000,3,6,01:41:37.87,253.34765625,2021-10-08 04:03:47.136000
+Strategic Approach (KMPPD) - End Local Processing
