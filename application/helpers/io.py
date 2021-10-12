@@ -55,6 +55,7 @@ def export_csv(filepath, filename, lst, mode="w"):
 
 
 def export_excel(filepath, filename, dict_data):
+    check_path(filepath)
     with pd.ExcelWriter(filename) as writer:
         for sheet_name, df in dict_data:
             df.to_excel(writer, sheet_name=sheet_name)

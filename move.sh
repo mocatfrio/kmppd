@@ -1,5 +1,6 @@
 #!/bin/sh
-## declare an array variable
+
+# Grid size and dimensionality simulation
 declare -a arr=(
                 "kmppd_7ba78e17-7f45-40e8-999d-eb7008fc743e"
                 "kmppd_1551e5e1-52cb-43cb-9d71-4589f71d7ded"
@@ -31,6 +32,7 @@ do
 
   if [[ ! "${arr[*]}" =~ "${filename}" ]]
   then
+    # Move cardinality simulation
     mv "${entry}" ~/database_cardinality/site_$SITE_NUM
     if [ $? -eq 0 ];
     then

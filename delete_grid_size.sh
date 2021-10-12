@@ -12,22 +12,14 @@ echo -e "\nEnter site:"
 read SITE_NUM
 
 ## now loop through the above array
-a=0
 for i in "${arr[@]}"
 do
-  if [[ -d ~/database/site_$SITE_NUM/$i/ ]]
+  rm -r ~/database/site_$SITE_NUM/$i/
+  if [ $? -eq 0 ];
   then
-    a=$((a + 1))
-    echo "~/database/site_${SITE_NUM}/${i} exists on your filesystem."
+      echo -e "${i} is successfully deleted from site ${SITE_NUM}\n"
   else
-    echo "~/database/site_${SITE_NUM}/${i} NOT exists on your filesystem."
+      echo -e "${i} is NOT successfully deleted from site ${SITE_NUM}\n"
   fi
 done
-
-echo $a
-if [[ $a -eq ${#arr[@]} ]]
-then
-  echo 'All files is exist!'
-else
-  echo 'Not all files is exist!'
-fi
+echo 'done'
