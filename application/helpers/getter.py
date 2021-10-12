@@ -99,16 +99,21 @@ def graph_path(sitepath=None, site_id=None, graph_type=None, opt=None):
     return graph_path
 
 
-def simulation_name(method, data_type, data_num, dim_size, grid):
+def simulation_name(method, data_type, data_num, dim_size, grid_size):
     if type(data_num) is list:
         data_num = "-".join([str(_) for _ in data_num])
     else:
         data_num = str(data_num)
-    return "_".join([method, data_type, data_num, str(dim_size), str(grid)])
+    return "_".join([method, data_type, data_num, str(dim_size), str(grid_size)])
 
 
-def simulation_id(method, data_type, data_num, dim_size, grid_size):
-    sim_info = io.import_json(C.LOG_PATH, C.SIMULATION_INFO_FILE)
+def simulation_id(method, data_type, data_num, dim_size, grid_size, custom_log_path=None, read_only=False):
+    if custom_log_path:
+        log_path = custom_log_path
+    else:
+        log_path = C.LOG_PATH
+
+    sim_info = io.import_json(log_path, C.SIMULATION_INFO_FILE)
     sim_name = simulation_name(method, data_type, data_num, dim_size, grid_size)
     if sim_name in sim_info:
         # read sim id 
@@ -117,7 +122,8 @@ def simulation_id(method, data_type, data_num, dim_size, grid_size):
         # generate new sim_id 
         sim_id = str(uuid.uuid4())
         sim_info[sim_name] = sim_id
-        io.export_json(C.LOG_PATH, C.SIMULATION_INFO_FILE, sim_info)
+        if not read_only:
+            io.export_json(C.LOG_PATH, C.SIMULATION_INFO_FILE, sim_info)
     return sim_id
 
 

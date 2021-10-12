@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 import system.config.config as config
 import application.helpers.constant as C
 import application.helpers.io as io
@@ -16,10 +17,10 @@ def generate():
         'Local Precomputing - Cardinality': cardinality(C.LOCAL_PRECOMPUTE),
         'Global Precomputing - Cardinality': cardinality(C.GLOBAL_PRECOMPUTE),
         'Query Processing - Cardinality': cardinality(C.RUN_QUERY),
-
     }
+    
 
-    io.export_excel(C.STORAGE_PATH, 'result.xlsx', result)
+    # io.export_excel(C.STORAGE_PATH, 'result.xlsx', result)
 
 
 def getParameter(opt):
@@ -39,6 +40,7 @@ def getMetric(opt):
         pass
 
 def cardinality(opt):
+    # generate header columns
     columns = []
     for parameter in getParameter(opt):
         columns.append((parameter, ''))
@@ -51,22 +53,34 @@ def cardinality(opt):
     # generate rows 
     rows = []
     for i in range(len(PARAM['cardinality'])):
-        row = [PARAM['cardinality'][i], PARAM['const_dimension'], PARAM['const_grid_size']]
-        if opt == C.GLOBAL_PRECOMPUTE:
-            row.append(PARAM['const_site_num'])
-        elif opt == C.RUN_QUERY:
-            row.append(PARAM['const_k'])
+        for data_type in PARAM['dataset_type']:
+            # value of parameters 
+            row = [data_type, PARAM['cardinality'][i], PARAM['const_dimension'], PARAM['const_grid_size']]
+            if opt == C.GLOBAL_PRECOMPUTE:
+                row.append(PARAM['const_site_num'])
+            elif opt == C.RUN_QUERY:
+                row.append(PARAM['const_k'])
+            
+            # get the result
+            # get simulation id 
+            sim_id = []
+            for method in PARAM['method']:
+                sim_id.append(getter.simulation_id(method, data_type, PARAM['cardinality'][i], 
+                                                     PARAM['const_dimension'], PARAM['const_grid_size'],
+                                                     custom_log_path=C.LOG_PROD_PATH, read_only=True))
 
-        # generate simulation name 
-        sim_name = []
-        for method in PARAM['method']:
-            sim_name.append(getter.simulation_name(method, ))
+            # read the logs
+            for metric in getMetric(opt):
+                pass
+            
+            print(row)
+            print(sim_id)
 
-        row += [0,0,0,0]
-        rows.append(row)
+            row += [0,0,0,0,0,0,0,0]
+            rows.append(row)
 
     df = pd.DataFrame(rows,
-                    index=['0', '1', '2', '3', '4'],
-                    columns=header)
+                      columns=header)
+    print(df)
 
 
