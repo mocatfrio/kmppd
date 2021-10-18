@@ -2,8 +2,8 @@ import os
 import csv
 import json
 import shutil
-from pathlib import Path
 import pandas as pd
+from pathlib import Path
 
 
 def import_json(filepath, filename):
@@ -56,8 +56,8 @@ def export_csv(filepath, filename, lst, mode="w"):
 
 def export_excel(filepath, filename, dict_data):
     check_path(filepath)
-    with pd.ExcelWriter(filename) as writer:
-        for sheet_name, df in dict_data:
+    with pd.ExcelWriter(filename, engine='xlsxwriter') as writer:
+        for sheet_name, df in dict_data.items():
             df.to_excel(writer, sheet_name=sheet_name)
     print("Exporting data", filename, "is success!")
 

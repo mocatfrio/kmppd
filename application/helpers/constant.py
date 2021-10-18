@@ -79,17 +79,19 @@ KEY_GRAPH_TYPE_PATH = "graph_type_path"
 
 # keywords of effect
 KEY_SITE_NUM = 'site_num'
-KEY_DATA_NUM = 'data_num'
-KEY_DIM = 'dim_size'
+KEY_CARDINALITY = 'cardinality'
+KEY_DIMENSIONALITY = 'dimensionality'
 KEY_GRID = 'grid_size'
 KEY_K = 'k_size'
 
 # keywords of metrics
-KEY_INDEX_TIME = 'index_time'
-KEY_LP_TIME = 'local_processing_time'
+KEY_INDEX_TIME = 'indexing_time'
+KEY_LP_TIME = 'local_precomputing_time'
+KEY_GP_TIME = 'global_precomputing_time'
 KEY_QUERY_TIME = 'query_time'
-KEY_INDEX_MEM = 'index_mem' 
-KEY_LP_MEM = 'local_processing_mem'
+KEY_INDEX_MEM = 'indexing_mem' 
+KEY_LP_MEM = 'local_precomputing_mem'
+KEY_GP_MEM = 'global_precomputing_mem'
 KEY_QUERY_MEM = 'query_mem'
 
 # result keys

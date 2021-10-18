@@ -17,7 +17,7 @@ def get_scenario():
         'k': [10, 20, 30, 40, 50],
         'const_k': 30,
         'dataset_type': [C.IND, C.ANT, C.FC],
-        'method': [C.KMPPD, C.OKMPPD, C.NAIVE]
+        'method': [C.KMPPD, C.OKMPPD]
     }
     
     if os.getenv("ENV") == 'dev':

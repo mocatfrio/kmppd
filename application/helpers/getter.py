@@ -127,8 +127,12 @@ def simulation_id(method, data_type, data_num, dim_size, grid_size, custom_log_p
     return sim_id
 
 
-def log_name(sim_name, metrics, site_num, k):
-    return "_".join([sim_name, str(metrics), str(site_num), str(k)])
+def log_path(sim_id, custom_log_path=None):
+    if custom_log_path:
+        log_path = custom_log_path
+    else:
+        log_path = C.LOG_PATH
+    return log_path + sim_id + "/"
 
 
 def keyname(method, sim_id):
